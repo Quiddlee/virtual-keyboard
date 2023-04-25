@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+  --color-primary: #000000;
+  --color-secondary: #FF1E56;
+  --color-tertirary: #15090c;
+  --color-quaternary: #32000c;
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, var(--color-quaternary), var(--color-tertirary));
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .8rem;
+  gap: .8rem;
+
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 79rem;
+  height: 25rem;
+  background-color: var(--color-primary);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1.5rem;
+
+  height: 4rem;
+  max-width: 15rem;
+  min-width: 4rem;
+  background-color: var(--color-secondary);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1.9rem;
+  transition: .1s all;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.key:hover {
+  cursor: pointer;
+  background-color: var(--color-tertirary);
+  color: var(--color-secondary);
+}
+
+.space {
+  min-width: 27rem;
+  flex-grow: 1;
+}
+
+.shift {
+  flex-grow: 1;
+  min-width: 10rem;
+}
