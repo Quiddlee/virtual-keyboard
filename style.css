@@ -95,3 +95,9 @@ body {
 .arrow {
   max-width: 4.35rem;
 }
+
+.active {
+  border-radius: 100px;
+  background-color: var(--color-tertirary);
+  color: var(--color-secondary);
+}
