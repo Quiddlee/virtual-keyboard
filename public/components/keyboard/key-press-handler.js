@@ -7,34 +7,31 @@ export default class KeyPressHandler extends Keyboard {
     this.keys = this.keyboardElem.children;
   }
 
-  keyDown = (evt) => {
-    evt.preventDefault();
-
-    const keyPressed = evt.key;
+  setCaps(evt) {
     const isCaps = evt.getModifierState('CapsLock');
-
-    // console.log(keyPressed, evt.keyCode, evt.location, isCaps);
 
     if (isCaps) {
       this.getKey('CapsLock')?.classList.add('active');
     } else {
       this.getKey('CapsLock')?.classList.remove('active');
     }
+  }
+
+  keyDown = (evt) => {
+    evt.preventDefault();
+    const keyPressed = evt.key;
+
+    console.log(keyPressed, evt.keyCode, evt.location);
 
     this.getKey(keyPressed)?.classList.add('active');
+    this.setCaps(evt);
   };
 
   keyUp = (evt) => {
     const keyPressed = evt.key;
-    const isCaps = evt.getModifierState('CapsLock');
+    console.log(keyPressed, evt.keyCode, evt.location);
 
-    if (isCaps) {
-      this.getKey('CapsLock')?.classList.add('active');
-    } else {
-      this.getKey('CapsLock')?.classList.remove('active');
-    }
-
-    // console.log(keyPressed, evt.keyCode, evt.location, isCaps);
     this.getKey(keyPressed)?.classList.remove('active');
+    this.setCaps(evt);
   };
 }
