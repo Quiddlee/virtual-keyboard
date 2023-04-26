@@ -7,6 +7,9 @@ export default function keyboard(keys) {
 
     if (keys[i] === ' ') key.classList.add('space');
     if (keys[i] === 'Shift') key.classList.add('shift');
+    if (keys[i] === 'Ctrl') key.classList.add('ctrl');
+    if (keys[i] === 'Win') key.classList.add('win');
+    if (keys[i] === '▲' || keys[i] === '►' || keys[i] === '▼' || keys[i] === '◄') key.classList.add('arrow');
 
     key.classList.add('key');
     key.textContent = keys[i];

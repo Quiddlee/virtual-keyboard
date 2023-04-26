@@ -2,7 +2,7 @@
 
 :root {
   --color-primary: #000000;
-  --color-secondary: #FF1E56;
+  --color-secondary: #ff1e56;
   --color-tertirary: #15090c;
   --color-quaternary: #32000c;
 }
@@ -31,7 +31,11 @@ body {
 
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(to bottom right, var(--color-quaternary), var(--color-tertirary));
+  background-image: linear-gradient(
+          to bottom right,
+          var(--color-quaternary),
+          var(--color-tertirary)
+  );
 }
 
 .keyboard {
@@ -66,6 +70,7 @@ body {
   font-size: 1.9rem;
   transition: .1s all;
   font-family: 'Open Sans', sans-serif;
+  flex-grow: 1;
 }
 
 .key:hover {
@@ -75,11 +80,18 @@ body {
 }
 
 .space {
-  min-width: 27rem;
-  flex-grow: 1;
+  min-width: 29rem;
 }
 
 .shift {
-  flex-grow: 1;
   min-width: 10rem;
+}
+
+.ctrl,
+.win {
+  max-width: 5rem;
+}
+
+.arrow {
+  max-width: 4.35rem;
 }
