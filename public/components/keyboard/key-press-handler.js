@@ -1,6 +1,6 @@
-import Keyboard from './keyboard';
+import KeysStates from './keys-states';
 
-export default class KeyPressHandler extends Keyboard {
+export default class KeyPressHandler extends KeysStates {
   constructor() {
     super();
     this.keyboardElem = document.querySelector('.keyboard');
@@ -8,17 +8,21 @@ export default class KeyPressHandler extends Keyboard {
   }
 
   setCaps(evt) {
-    const isCaps = evt.getModifierState('CapsLock');
+    const getCaps = evt.getModifierState('CapsLock');
+    const capsKey = this.getKey('CapsLock')?.classList;
 
-    if (isCaps) {
-      this.getKey('CapsLock')?.classList.add('active');
-    } else {
-      this.getKey('CapsLock')?.classList.remove('active');
+    if (getCaps) capsKey.add('active');
+    else capsKey.remove('active');
+
+    if (getCaps !== this.isCaps) {
+      this.isCaps = getCaps;
+      this.changeCaps();
     }
   }
 
   keyPress = (evt, downOrUp = true) => {
     evt.preventDefault();
+
     const keyPressed = evt.key;
     const keyLocation = evt.location;
     const key = this.getKey(keyPressed, keyLocation)?.classList;

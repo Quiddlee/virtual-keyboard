@@ -1,103 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 :root {
-  --color-primary: #000000;
-  --color-secondary: #ff1e56;
-  --color-tertirary: #15090c;
-  --color-quaternary: #32000c;
+    --color-primary: #000000;
+    --color-secondary: #ff1e56;
+    --color-tertirary: #15090c;
+    --color-quaternary: #32000c;
 }
 
 * {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  font-size: 62.5%;
-  box-sizing: border-box;
+    font-size: 62.5%;
+    box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  width: 100vw;
-  height: 100vh;
-  background-image: linear-gradient(
-          to bottom right,
-          var(--color-quaternary),
-          var(--color-tertirary)
-  );
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+            to bottom right,
+            var(--color-quaternary),
+            var(--color-tertirary)
+    );
 }
 
 .keyboard {
-  display: flex;
-  flex-wrap: wrap;
-  padding: .8rem;
-  gap: .8rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .8rem;
+    gap: .8rem;
 
-  justify-content: space-between;
-  align-items: center;
+    justify-content: space-between;
+    align-items: center;
 
-  max-width: 79rem;
-  height: 25rem;
-  background-color: var(--color-primary);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, .1);
+    max-width: 79rem;
+    height: 25rem;
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .key {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  padding: 1.5rem;
+    padding: 1.5rem;
 
-  height: 4rem;
-  max-width: 15rem;
-  min-width: 4rem;
-  background-color: var(--color-secondary);
-  border-radius: 6px;
-  text-align: center;
-  font-size: 1.9rem;
-  transition: .1s all;
-  font-family: 'Open Sans', sans-serif;
-  flex-grow: 1;
+    height: 4rem;
+    max-width: 15rem;
+    min-width: 4rem;
+    background-color: var(--color-secondary);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1.87rem;
+    transition: .1s all;
+    font-family: 'Open Sans', sans-serif;
+    flex-grow: 1;
 }
 
 .key:hover {
-  cursor: pointer;
-  background-color: var(--color-tertirary);
-  color: var(--color-secondary);
+    cursor: pointer;
+    background-color: var(--color-tertirary);
+    color: var(--color-secondary);
 }
 
 .space {
-  min-width: 29rem;
+    min-width: 29rem;
 }
 
 .shift {
-  min-width: 10rem;
+    min-width: 10rem;
 }
 
 .ctrl,
 .win {
-  max-width: 5rem;
+    max-width: 5rem;
 }
 
 .arrow {
-  max-width: 4.35rem;
+    max-width: 4.35rem;
 }
 
 .active {
-  border-radius: 100px;
-  background-color: var(--color-tertirary);
-  color: var(--color-secondary);
+    border-radius: 100px;
+    background-color: var(--color-tertirary);
+    color: var(--color-secondary);
 }
