@@ -10,5 +10,5 @@ app.setAttribute('id', 'app');
 document.body.prepend(app);
 app.append(keyboard);
 
-document.body.addEventListener('keydown', (evt) => new KeyPressHandler().keyPress(evt));
+document.body.addEventListener('keydown', new KeyPressHandler().keyPress);
 document.body.addEventListener('keyup', (evt) => new KeyPressHandler().keyPress(evt, false));

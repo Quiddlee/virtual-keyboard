@@ -15,7 +15,8 @@ export default class Keyboard {
       const currKey = key.textContent.toLowerCase();
 
       if (currKeyData === searchedKey && +currKeyLocation === +keyLocation) temp = key;
-      if (currKey === searchedKey) backup = key;
+      if (currKey === searchedKey || currKeyData === searchedKey) backup = key;
+
       return false;
     });
 
