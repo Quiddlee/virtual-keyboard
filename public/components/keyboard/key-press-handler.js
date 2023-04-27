@@ -20,18 +20,18 @@ export default class KeyPressHandler extends Keyboard {
   keyDown = (evt) => {
     evt.preventDefault();
     const keyPressed = evt.key;
+    const keyLocation = evt.location;
 
-    console.log(keyPressed, evt.keyCode, evt.location);
-
-    this.getKey(keyPressed)?.classList.add('active');
+    this.getKey(keyPressed, keyLocation)?.classList.add('active');
     this.setCaps(evt);
   };
 
   keyUp = (evt) => {
+    evt.preventDefault();
     const keyPressed = evt.key;
-    console.log(keyPressed, evt.keyCode, evt.location);
+    const keyLocation = evt.location;
 
-    this.getKey(keyPressed)?.classList.remove('active');
+    this.getKey(keyPressed, keyLocation)?.classList.remove('active');
     this.setCaps(evt);
   };
 }
