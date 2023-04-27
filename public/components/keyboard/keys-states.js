@@ -1,7 +1,7 @@
 import Keyboard from './keyboard';
 
 export default class KeysStates extends Keyboard {
-  changeCaps() {
+  changeCapsKeys() {
     [...this.keys].forEach((key) => {
       const currKey = key.textContent;
 

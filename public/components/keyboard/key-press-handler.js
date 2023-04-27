@@ -7,7 +7,7 @@ export default class KeyPressHandler extends KeysStates {
     this.keys = this.keyboardElem.children;
   }
 
-  setCaps(evt) {
+  checkCaps(evt) {
     const getCaps = evt.getModifierState('CapsLock');
     const capsKey = this.getKey('CapsLock')?.classList;
 
@@ -16,7 +16,7 @@ export default class KeyPressHandler extends KeysStates {
 
     if (getCaps !== this.isCaps) {
       this.isCaps = getCaps;
-      this.changeCaps();
+      this.changeCapsKeys();
     }
   }
 
@@ -30,6 +30,6 @@ export default class KeyPressHandler extends KeysStates {
     if (downOrUp) key?.add('active');
     else key?.remove('active');
 
-    this.setCaps(evt);
+    this.checkCaps(evt);
   };
 }
