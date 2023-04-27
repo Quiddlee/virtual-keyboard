@@ -57,7 +57,7 @@ export default class Keyboard {
       <div class="key">]</div>
       <div class="key">\\</div>
       <div data-key="Delete" class="key">Del</div>
-      <div class="key">CapsLock</div>
+      <div class="caps key">CapsLock</div>
       <div class="key">a</div>
       <div class="key">s</div>
       <div class="key">d</div>
@@ -69,7 +69,7 @@ export default class Keyboard {
       <div class="key">l</div>
       <div class="key">;</div>
       <div class="key">'</div>
-      <div class="key">Enter</div>
+      <div class="enter key">Enter</div>
       <div data-key="Shift-1" class="shift key">Shift</div>
       <div class="key">z</div>
       <div class="key">x</div>
