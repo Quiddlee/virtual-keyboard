@@ -5,7 +5,7 @@ export default class Keyboard {
     this.keyboardElem = document.createElement('div');
     this.keys = this.keyboardElem.children;
     this.isCaps = false;
-    this.currentKeys = 0;
+    this.currentLang = 0;
   }
 
   getKey(keyName, keyLocation) {
@@ -45,13 +45,14 @@ export default class Keyboard {
 
         doubles.add(keyMap[i]);
       }
+
       this.keyboardElem.append(key);
     }
   }
 
   #initializeKeyboard() {
     this.keyboardElem.classList.add('keyboard');
-    this.renderKeys(KEYMAP[this.currentKeys]);
+    this.renderKeys(KEYMAP[this.currentLang]);
     return this.keyboardElem;
   }
 

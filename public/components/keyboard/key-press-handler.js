@@ -1,6 +1,6 @@
-import KeysStates from './keys-states';
+import KeyStates from './key-states';
 
-export default class KeyPressHandler extends KeysStates {
+export default class KeyPressHandler extends KeyStates {
   constructor() {
     super();
     this.keyboardElem = document.querySelector('.keyboard');
@@ -8,32 +8,31 @@ export default class KeyPressHandler extends KeysStates {
   }
 
   checkCaps(evt) {
-    const getCaps = evt.getModifierState('CapsLock');
+    const currCapsState = evt.getModifierState('CapsLock');
     const capsKey = this.getKey('CapsLock')?.classList;
 
-    if (getCaps) capsKey.add('active');
+    if (currCapsState) capsKey.add('active');
     else capsKey.remove('active');
 
-    if (getCaps !== this.isCaps) {
-      this.isCaps = getCaps;
-      this.changeCapsKeys();
-    }
+    if (currCapsState === this.isCaps) return;
+
+    this.isCaps = currCapsState;
+    this.toggleCaps();
   }
 
   keyPress = (evt, downOrUp = true) => {
     evt.preventDefault();
 
-    const keyPressed = evt.key;
+    const pressedKey = evt.key;
     const keyLocation = evt.location;
-    const key = this.getKey(keyPressed, keyLocation)?.classList;
+    const keyElem = this.getKey(pressedKey, keyLocation)?.classList;
 
-    if (downOrUp) key?.add('active');
-    else key?.remove('active');
+    if (downOrUp) keyElem?.add('active');
+    else keyElem?.remove('active');
 
     this.checkCaps(evt);
 
     if (!(evt.altKey && evt.ctrlKey)) return;
-
     this.switchKeysLang();
   };
 }
