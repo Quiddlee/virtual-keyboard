@@ -33,17 +33,19 @@ export default class Keyboard {
 
     for (let i = 0, len = keyMap.length; i < len; i += 1) {
       const key = document.createElement('div');
-      key.classList.add('key');
-      key.textContent = this.isCaps && keyMap[i].length === 1 ? keyMap[i].toUpperCase() : keyMap[i];
+      const keyContent = keyMap[i];
 
-      if (EXCEPTIONS.has(keyMap[i])) {
-        const [[keyDataLeft, keyDataRight], keyClass] = EXCEPTIONS.get(keyMap[i]);
-        const data = doubles.has(keyMap[i]) ? keyDataRight : keyDataLeft;
+      key.classList.add('key');
+      key.textContent = this.isCaps && keyContent.length === 1 ? keyContent.toUpperCase() : keyContent;
+
+      if (EXCEPTIONS.has(keyContent)) {
+        const [[keyDataLeft, keyDataRight], keyClass] = EXCEPTIONS.get(keyContent);
+        const data = doubles.has(keyContent) ? keyDataRight : keyDataLeft;
 
         keyClass && key.classList.add(keyClass);
         data && key.setAttribute('data-key', data);
 
-        doubles.add(keyMap[i]);
+        doubles.add(keyContent);
       }
 
       this.keyboardElem.append(key);
