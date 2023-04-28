@@ -5,7 +5,7 @@ export default class Keyboard {
     this.keyboardElem = document.createElement('div');
     this.keys = this.keyboardElem.children;
     this.isCaps = false;
-    this.currentKeys = KEYMAP[0];
+    this.currentKeys = 0;
   }
 
   getKey(keyName, keyLocation) {
@@ -27,28 +27,31 @@ export default class Keyboard {
     return temp || backup;
   }
 
-  #initializeKeyboard() {
+  renderKeys(keyMap) {
+    this.keyboardElem.innerHTML = '';
     const doubles = new Set();
-    this.keyboardElem.classList.add('keyboard');
 
-    for (let i = 0, len = this.currentKeys.length; i < len; i += 1) {
+    for (let i = 0, len = keyMap.length; i < len; i += 1) {
       const key = document.createElement('div');
       key.classList.add('key');
-      key.textContent = this.currentKeys[i];
+      key.textContent = keyMap[i];
 
-      if (EXCEPTIONS.has(this.currentKeys[i])) {
-        const [[keyDataLeft, keyDataRight], keyClass] = EXCEPTIONS.get(this.currentKeys[i]);
-        const data = doubles.has(this.currentKeys[i]) ? keyDataRight : keyDataLeft;
+      if (EXCEPTIONS.has(keyMap[i])) {
+        const [[keyDataLeft, keyDataRight], keyClass] = EXCEPTIONS.get(keyMap[i]);
+        const data = doubles.has(keyMap[i]) ? keyDataRight : keyDataLeft;
 
         keyClass && key.classList.add(keyClass);
         data && key.setAttribute('data-key', data);
 
-        doubles.add(this.currentKeys[i]);
+        doubles.add(keyMap[i]);
       }
-
       this.keyboardElem.append(key);
     }
+  }
 
+  #initializeKeyboard() {
+    this.keyboardElem.classList.add('keyboard');
+    this.renderKeys(KEYMAP[this.currentKeys]);
     return this.keyboardElem;
   }
 
