@@ -34,7 +34,7 @@ export default class Keyboard {
     for (let i = 0, len = keyMap.length; i < len; i += 1) {
       const key = document.createElement('div');
       key.classList.add('key');
-      key.textContent = keyMap[i];
+      key.textContent = this.isCaps && keyMap[i].length === 1 ? keyMap[i].toUpperCase() : keyMap[i];
 
       if (EXCEPTIONS.has(keyMap[i])) {
         const [[keyDataLeft, keyDataRight], keyClass] = EXCEPTIONS.get(keyMap[i]);
