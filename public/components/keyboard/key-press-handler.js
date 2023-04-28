@@ -33,6 +33,10 @@ export default class KeyPressHandler extends KeyStates {
     this.checkCaps(evt);
 
     if (!(evt.altKey && evt.ctrlKey)) return;
+
     this.switchKeysLang();
+    ['Alt', 'Control'].forEach((key) => {
+      this.getKey(key, 1)?.classList.add('active');
+    });
   };
 }
