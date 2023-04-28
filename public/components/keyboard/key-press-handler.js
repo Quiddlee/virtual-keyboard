@@ -31,5 +31,9 @@ export default class KeyPressHandler extends KeysStates {
     else key?.remove('active');
 
     this.checkCaps(evt);
+
+    if (!(evt.altKey && evt.ctrlKey)) return;
+
+    this.switchKeysLang();
   };
 }

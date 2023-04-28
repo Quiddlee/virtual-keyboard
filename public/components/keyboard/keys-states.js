@@ -1,4 +1,5 @@
 import Keyboard from './keyboard';
+import { KEYMAP } from '../../data/data';
 
 export default class KeysStates extends Keyboard {
   changeCapsKeys() {
@@ -11,5 +12,11 @@ export default class KeysStates extends Keyboard {
           : currKey.toLowerCase();
       }
     });
+  }
+
+  switchKeysLang() {
+    this.currentKeys = this.currentKeys === 2 ? 0 : this.currentKeys + 1;
+
+    this.renderKeys(KEYMAP[this.currentKeys]);
   }
 }
