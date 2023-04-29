@@ -33,5 +33,14 @@ export default class KeyPressHandler extends KeyStates {
     if (evt.altKey && evt.ctrlKey) this.switchKeysLang();
 
     this.checkCaps(evt);
+    if ((evt.shiftKey && !this.isShift) || (!evt.shiftKey && this.isShift)) this.toggleShift();
+
+    if (this.isCaps && this.isShift) {
+      this.isCaps = false;
+      this.toggleCaps();
+    } else if (this.isCaps || this.isShift) {
+      this.isCaps = true;
+      this.toggleCaps();
+    }
   };
 }
