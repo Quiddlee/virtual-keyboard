@@ -20,5 +20,7 @@ export default class KeyStates extends Keyboard {
     ['Alt', 'Control'].forEach((key) => {
       this.getKey(key, 1)?.classList.add('active');
     });
+
+    localStorage.setItem('currentLang', this.currentLang);
   }
 }

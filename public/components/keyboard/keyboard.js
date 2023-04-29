@@ -5,7 +5,7 @@ export default class Keyboard {
     this.keyboardElem = document.createElement('div');
     this.keys = this.keyboardElem.children;
     this.isCaps = false;
-    this.currentLang = 0;
+    this.currentLang = +localStorage.getItem('currentLang') || 0;
   }
 
   getKey(keyName, keyLocation) {
