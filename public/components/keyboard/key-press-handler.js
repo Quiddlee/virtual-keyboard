@@ -4,7 +4,6 @@ export default class KeyPressHandler extends KeyStates {
   constructor() {
     super();
     this.keyboardElem = document.querySelector('.keyboard');
-    this.keys = this.keyboardElem.children;
   }
 
   checkCaps(evt) {
@@ -23,7 +22,7 @@ export default class KeyPressHandler extends KeyStates {
   keyPress = (evt, downOrUp = true) => {
     evt.preventDefault();
 
-    const pressedKey = evt.key;
+    const pressedKey = evt.code;
     const keyElem = this.getKey(pressedKey)?.classList;
 
     if (downOrUp) keyElem?.add('active');

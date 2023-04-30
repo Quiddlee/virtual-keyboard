@@ -17,8 +17,8 @@ export default class KeyStates extends Keyboard {
     this.currentLang = this.currentLang === KEYMAP.length - 1 ? 0 : this.currentLang + 1;
     this.renderKeys(KEYMAP[this.currentLang][0]);
 
-    ['Alt', 'Control'].forEach((key) => {
-      this.getKey(key, 1)?.classList.add('active');
+    ['altleft', 'controlleft'].forEach((key) => {
+      this.getKey(key)?.classList.add('active');
     });
 
     localStorage.setItem('currentLang', this.currentLang);

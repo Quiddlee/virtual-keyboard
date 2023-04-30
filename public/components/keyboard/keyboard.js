@@ -1,4 +1,4 @@
-import { EXCEPTIONS, KEYMAP } from '../../data/data';
+import { KEYIDS, KEYMAP } from '../../data/data';
 
 export default class Keyboard {
   constructor() {
@@ -10,38 +10,19 @@ export default class Keyboard {
   }
 
   getKey(keyName) {
-    const searchedKey = keyName.toLowerCase();
-
-    return [...this.keys].find((key) => {
-      const currKeyData = key.dataset.key?.toLowerCase();
-      const currKey = key.textContent.toLowerCase();
-
-      if (currKey === searchedKey || currKeyData === searchedKey) return key;
-
-      return false;
-    });
+    return document.getElementById(keyName.toLowerCase());
   }
 
   renderKeys(keyMap) {
     this.keyboardElem.innerHTML = '';
-    const doubles = new Set();
 
     for (let i = 0, len = keyMap.length; i < len; i += 1) {
       const key = document.createElement('div');
       const keyContent = keyMap[i];
 
+      key.id = KEYIDS[i];
       key.classList.add('key');
-      key.textContent = this.isCaps && keyContent.length === 1 ? keyContent.toUpperCase() : keyContent;
-
-      if (EXCEPTIONS.has(keyContent)) {
-        const [[keyDataLeft, keyDataRight], keyClass] = EXCEPTIONS.get(keyContent);
-        const data = doubles.has(keyContent) ? keyDataRight : keyDataLeft;
-
-        keyClass && key.classList.add(keyClass);
-        data && key.setAttribute('data-key', data);
-
-        doubles.add(keyContent);
-      }
+      key.textContent = keyContent;
 
       this.keyboardElem.append(key);
     }

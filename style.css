@@ -78,22 +78,26 @@ body {
   color: var(--color-secondary);
 }
 
-.space {
+#space {
   min-width: 34rem;
 }
 
-.caps,
-.enter,
-.shift {
+#capslock,
+#enter,
+#shiftleft,
+#shiftright {
   min-width: 10rem;
 }
 
-.ctrl,
-.win {
+#control,
+#metaleft {
   max-width: 5rem;
 }
 
-.arrow {
+#arrowleft,
+#arrowright,
+#arrowup,
+#arrowdown {
   max-width: 4.35rem;
 }
 

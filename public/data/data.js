@@ -10,21 +10,8 @@ const KEYS_UA = [
   ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', '[', ']', '\\', 'Del', 'CapsLock', 'ф', 'і', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'є', 'Enter', 'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '▲', 'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', '◄', '▼', '►', 'Ctrl'],
   ['~', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', '{', '}', '/', 'Del', 'CapsLock', 'ф', 'і', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'є', 'Enter', 'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', ',', '▲', 'Shift', 'Ctrl', 'Win', 'Alt', ' ', 'Alt', '◄', '▼', '►', 'Ctrl'],
 ];
+const KEYIDS = ['backquote', 'digit1', 'digit2', 'digit3', 'digit4', 'digit5', 'digit6', 'digit7', 'digit8', 'digit9', 'digit0', 'minus', 'equal', 'backspace', 'tab', 'keyq', 'keyw', 'keye', 'keyr', 'keyt', 'keyy', 'keyu', 'keyi', 'keyo', 'keyp', 'bracketleft', 'bracketright', 'backslash', 'delete', 'capslock', 'keya', 'keys', 'keyd', 'keyf', 'keyg', 'keyh', 'keyj', 'keyk', 'keyl', 'semicolon', 'quote', 'enter', 'shiftleft', 'keyz', 'keyx', 'keyc', 'keyv', 'keyb', 'keyn', 'keym', 'comma', 'period', 'slash', 'arrowup', 'shiftright', 'controlleft', 'metaleft', 'altleft', 'space', 'altright', 'arrowleft', 'arrowdown', 'arrowright', 'controlright'];
+
 const KEYMAP = [KEYS_RU, KEYS_ENG, KEYS_UA];
 
-const EXCEPTIONS = new Map([
-  ['Del', [['Delete'], '']],
-  ['Shift', [['ShiftLeft', 'ShiftRight'], 'shift']],
-  ['CapsLock', [[''], 'caps']],
-  ['Enter', [[''], 'enter']],
-  ['▲', [['ArrowUp'], '']],
-  ['▼', [['ArrowDown'], '']],
-  ['◄', [['ArrowLeft'], '']],
-  ['►', [['ArrowRight'], '']],
-  [' ', [['Space'], 'space']],
-  ['Alt', [['AltLeft', 'AltRight'], 'alt']],
-  ['Ctrl', [['ControlLeft', 'ControlRight'], 'ctrl']],
-  ['Win', [['MetaLeft'], 'win']],
-]);
-
-export { KEYMAP, EXCEPTIONS };
+export { KEYMAP, KEYIDS };
