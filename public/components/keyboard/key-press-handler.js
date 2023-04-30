@@ -24,8 +24,7 @@ export default class KeyPressHandler extends KeyStates {
     evt.preventDefault();
 
     const pressedKey = evt.key;
-    const keyLocation = evt.location;
-    const keyElem = this.getKey(pressedKey, keyLocation)?.classList;
+    const keyElem = this.getKey(pressedKey)?.classList;
 
     if (downOrUp) keyElem?.add('active');
     else keyElem?.remove('active');

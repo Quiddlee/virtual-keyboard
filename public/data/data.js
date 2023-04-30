@@ -14,7 +14,7 @@ const KEYMAP = [KEYS_RU, KEYS_ENG, KEYS_UA];
 
 const EXCEPTIONS = new Map([
   ['Del', [['Delete'], '']],
-  ['Shift', [['Shift-1', 'Shift-2'], 'shift']],
+  ['Shift', [['ShiftLeft', 'ShiftRight'], 'shift']],
   ['CapsLock', [[''], 'caps']],
   ['Enter', [[''], 'enter']],
   ['▲', [['ArrowUp'], '']],
@@ -22,9 +22,9 @@ const EXCEPTIONS = new Map([
   ['◄', [['ArrowLeft'], '']],
   ['►', [['ArrowRight'], '']],
   [' ', [['Space'], 'space']],
-  ['Alt', [['Alt-1', 'Alt-2'], 'alt']],
-  ['Ctrl', [['Control-1', 'Control-2'], 'ctrl']],
-  ['Win', [['Meta'], 'win']],
+  ['Alt', [['AltLeft', 'AltRight'], 'alt']],
+  ['Ctrl', [['ControlLeft', 'ControlRight'], 'ctrl']],
+  ['Win', [['MetaLeft'], 'win']],
 ]);
 
 export { KEYMAP, EXCEPTIONS };

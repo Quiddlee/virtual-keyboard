@@ -9,23 +9,17 @@ export default class Keyboard {
     this.currentLang = +localStorage.getItem('currentLang') || 0;
   }
 
-  getKey(keyName, keyLocation) {
+  getKey(keyName) {
     const searchedKey = keyName.toLowerCase();
-    let temp;
-    let backup;
 
-    [...this.keys].find((key) => {
-      const currKeyLocation = key.dataset.key?.toLowerCase()?.slice(-1);
-      const currKeyData = key.dataset.key?.toLowerCase().replace(/-\d/, '');
+    return [...this.keys].find((key) => {
+      const currKeyData = key.dataset.key?.toLowerCase();
       const currKey = key.textContent.toLowerCase();
 
-      if (currKeyData === searchedKey && +currKeyLocation === +keyLocation) temp = key;
-      if (currKey === searchedKey || currKeyData === searchedKey) backup = key;
+      if (currKey === searchedKey || currKeyData === searchedKey) return key;
 
       return false;
     });
-
-    return temp || backup;
   }
 
   renderKeys(keyMap) {
