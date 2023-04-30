@@ -4,6 +4,7 @@ export default class KeyPressHandler extends KeyStates {
   constructor() {
     super();
     this.keyboardElem = document.querySelector('.keyboard');
+    this.keys = this.keyboardElem.children;
   }
 
   checkCaps(evt) {

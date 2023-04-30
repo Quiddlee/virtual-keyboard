@@ -13,20 +13,7 @@ export default class KeyStates extends Keyboard {
     });
   }
 
-  switchKeysLang() {
-    this.currentLang = this.currentLang === KEYMAP.length - 1 ? 0 : this.currentLang + 1;
-    this.renderKeys(KEYMAP[this.currentLang][0]);
-
-    ['altleft', 'controlleft'].forEach((key) => {
-      this.getKey(key)?.classList.add('active');
-    });
-
-    localStorage.setItem('currentLang', this.currentLang);
-  }
-
-  toggleShift() {
-    this.isShift = !this.isShift;
-
+  renderKeysContent() {
     [...this.keys].forEach((key, i) => {
       const currKey = key;
       const newKey = KEYMAP[this.currentLang][this.isShift ? 1 : 0][i];
@@ -35,5 +22,16 @@ export default class KeyStates extends Keyboard {
 
       currKey.textContent = newKey;
     });
+  }
+
+  switchKeysLang() {
+    this.currentLang = this.currentLang === KEYMAP.length - 1 ? 0 : this.currentLang + 1;
+    this.renderKeysContent();
+    localStorage.setItem('currentLang', this.currentLang);
+  }
+
+  toggleShift() {
+    this.isShift = !this.isShift;
+    this.renderKeysContent();
   }
 }
