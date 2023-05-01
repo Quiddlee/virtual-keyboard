@@ -31,7 +31,8 @@ export default class KeyPressHandler extends KeyStates {
     if (key === 'Del') {
       const { selectionStart } = this.textareaElem;
       const { selectionEnd } = this.textareaElem;
-      this.textareaElem.value = this.textareaElem.value.slice(0, selectionEnd) + this.textareaElem.value.slice(selectionEnd + 1);
+      this.textareaElem.value = this.textareaElem.value.slice(0, selectionEnd)
+          + this.textareaElem.value.slice(selectionEnd + 1);
       this.textareaElem.setSelectionRange(selectionStart, selectionEnd);
     }
   };
