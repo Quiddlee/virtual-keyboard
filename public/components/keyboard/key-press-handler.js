@@ -17,7 +17,14 @@ export default class KeyPressHandler extends KeyStates {
     }
 
     if (key === 'Backspace') {
-      this.textareaElem.value = this.textareaElem.value.slice(0, -1);
+      const { selectionStart } = this.textareaElem;
+      const { selectionEnd } = this.textareaElem;
+
+      const cut = this.textareaElem.value.split('');
+      cut.splice(selectionStart - 1, 1);
+      this.textareaElem.value = cut.join('');
+
+      this.textareaElem.setSelectionRange(selectionStart - 1, selectionEnd - 1);
     }
 
     if (key === 'Enter') {
@@ -31,8 +38,11 @@ export default class KeyPressHandler extends KeyStates {
     if (key === 'Del') {
       const { selectionStart } = this.textareaElem;
       const { selectionEnd } = this.textareaElem;
-      this.textareaElem.value = this.textareaElem.value.slice(0, selectionEnd)
-          + this.textareaElem.value.slice(selectionEnd + 1);
+
+      const cut = this.textareaElem.value.split('');
+      cut.splice(selectionStart, 1);
+      this.textareaElem.value = cut.join('');
+
       this.textareaElem.setSelectionRange(selectionStart, selectionEnd);
     }
   };
