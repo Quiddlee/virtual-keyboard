@@ -4,12 +4,13 @@ import { KEYMAP } from '../../data/data';
 export default class KeyStates extends Keyboard {
   toggleCaps() {
     [...this.keys].forEach((key) => {
-      const currKey = key.textContent;
+      const currKey = key.textContent.trim();
       if (currKey.length !== 1) return;
 
-      key.textContent = this.isCaps
-        ? currKey.toUpperCase()
-        : currKey.toLowerCase();
+      key.innerHTML = `
+        ${this.isCaps ? currKey.toUpperCase() : currKey.toLowerCase()}
+        <span class="key__layer"></span>
+      `;
     });
   }
 
@@ -18,9 +19,12 @@ export default class KeyStates extends Keyboard {
       const currKey = key;
       const newKey = KEYMAP[this.currentLang][this.isShift ? 1 : 0][i];
 
-      if (currKey.textContent.length !== 1 || currKey.textContent === newKey) return;
+      if (currKey.textContent.trim().length !== 1 || currKey.textContent.trim() === newKey) return;
 
-      currKey.textContent = newKey;
+      currKey.innerHTML = `
+        ${newKey}
+        <span class="key__layer"></span>
+      `;
     });
   }
 

@@ -22,7 +22,11 @@ export default class Keyboard {
 
       key.id = KEYIDS[i];
       key.classList.add('key');
-      key.textContent = keyContent;
+
+      key.innerHTML = `
+        ${keyContent}
+        <span class="key__layer"></span>
+      `;
 
       this.keyboardElem.append(key);
     }
