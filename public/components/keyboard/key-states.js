@@ -4,10 +4,11 @@ import { KEYMAP } from '../../data/data';
 export default class KeyStates extends Keyboard {
   toggleCaps() {
     [...this.keys].forEach((key) => {
-      const currKey = key.textContent;
+      const keyElem = key;
+      const currKey = keyElem.textContent;
       if (currKey.length !== 1) return;
 
-      key.textContent = this.isCaps ? currKey.toUpperCase() : currKey.toLowerCase();
+      keyElem.textContent = this.isCaps ? currKey.toUpperCase() : currKey.toLowerCase();
     });
   }
 

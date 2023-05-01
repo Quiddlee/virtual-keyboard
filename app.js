@@ -18,4 +18,3 @@ const keyPressHandler = new KeyPressHandler();
 document.body.addEventListener('keydown', keyPressHandler.keyPress);
 document.body.addEventListener('keyup', (evt) => keyPressHandler.keyPress(evt, false));
 keyboard.addEventListener('mousedown', keyPressHandler.mousePress);
-document.body.addEventListener('mouseup', (evt) => keyPressHandler.mousePress(evt, false));

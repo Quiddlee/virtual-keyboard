@@ -86,6 +86,9 @@ export default class KeyPressHandler extends KeyStates {
     const wave = this.createAnimationWave();
 
     if (downOrUp) {
+      document.body.onmouseup = () => this.mousePress(evt, false);
+
+      this.handleTextarea(keyElem.textContent);
       keyElem?.classList.add('active');
 
       if (evt.repeat) return;
