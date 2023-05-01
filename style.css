@@ -15,7 +15,7 @@
     scale: 3;
     opacity: 0;
     border-radius: 100px;
-    background-color: rgba(243, 243, 243, .7);
+    background-color: rgba(255, 255, 255, .7);
   }
   100% {
     opacity: 1;
@@ -91,7 +91,7 @@ body {
   height: 4rem;
   max-width: 15rem;
   min-width: 4.4rem;
-  background-color: rgba(243, 243, 243, .7);
+  background-color: rgba(255, 255, 255, .6);
   border-radius: 6px;
   text-align: center;
   font-size: 1.35rem;
@@ -125,7 +125,7 @@ body {
   height: 100%;
   background-color: rgba(243, 243, 243, .7);
   opacity: 1;
-  animation: btnClickReverse .2s cubic-bezier(.64, .36, .16, 1.03);
+  animation: btnClickReverse .15s cubic-bezier(.64, .36, .16, 1.03);
 }
 
 .key:hover {

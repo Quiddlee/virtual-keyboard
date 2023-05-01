@@ -8,22 +8,26 @@ export default class KeyPressHandler extends KeyStates {
     this.keys = this.keyboardElem.children;
   }
 
-  checkCaps(pressedKey, layerOld, capsElem) {
+  createAnimationWave = (reversed = false) => {
+    const keyLayer = document.createElement('span');
+
+    keyLayer.classList.add('key__layer', `key__layer--active${reversed ? '-rev' : ''}`);
+    keyLayer.onanimationend = () => keyLayer.remove();
+
+    return keyLayer;
+  };
+
+  checkCaps(pressedKey, capsElem) {
     if (pressedKey !== 'CapsLock' && pressedKey.id !== 'capslock') return;
 
     this.isCaps = !this.isCaps;
-
     if (this.isCaps) capsElem.classList.add('active');
 
     if (!this.isCaps) {
+      const wave = this.createAnimationWave(true);
+
       capsElem.innerHTML = capsElem.textContent;
-
-      const keyLayer = document.createElement('span');
-
-      keyLayer.classList.add('key__layer', 'key__layer--active-rev');
-      keyLayer.onanimationend = () => keyLayer.remove();
-
-      capsElem.append(keyLayer);
+      capsElem.append(wave);
       capsElem.classList.remove('active');
     }
 
@@ -36,18 +40,15 @@ export default class KeyPressHandler extends KeyStates {
 
     const pressedKey = evt.code;
     const keyElem = this.getKey(pressedKey);
-    const keyLayer = document.createElement('span');
-
-    keyLayer.classList.add('key__layer', 'key__layer--active');
-    keyLayer.onanimationend = () => keyLayer.remove();
+    const wave = this.createAnimationWave();
 
     if (downOrUp) {
       keyElem.classList.add('active');
 
       if (evt.repeat) return;
 
-      keyElem.append(keyLayer);
-      this.checkCaps(pressedKey, keyLayer, keyElem);
+      keyElem.append(wave);
+      this.checkCaps(pressedKey, keyElem);
     } else if (!downOrUp && pressedKey !== 'CapsLock') {
       keyElem.classList.remove('active');
     }
@@ -63,16 +64,15 @@ export default class KeyPressHandler extends KeyStates {
 
     const pressedKey = evt.target;
     const keyElem = this.getKey(pressedKey.id);
-    const keyLayer = document.createElement('span');
-
-    keyLayer.classList.add('key__layer', 'key__layer--active');
-    keyLayer.onanimationend = () => keyLayer.remove();
+    const wave = this.createAnimationWave();
 
     if (downOrUp) {
       keyElem?.classList.add('active');
-      this.checkCaps(keyLayer);
 
-      if (!evt.repeat) keyElem.append(keyLayer);
+      if (evt.repeat) return;
+
+      keyElem.append(wave);
+      this.checkCaps(pressedKey, keyElem);
     } else if (!downOrUp && pressedKey.id !== 'capslock') {
       keyElem?.classList.remove('active');
     }
