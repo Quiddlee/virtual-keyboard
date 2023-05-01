@@ -66,6 +66,7 @@ body {
   background-image: linear-gradient(to top left, #39b385, #9be15d);
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, .1);
+  overflow: hidden;
 }
 
 .key {
@@ -84,7 +85,7 @@ body {
   border-radius: 6px;
   text-align: center;
   font-size: 1.37rem;
-  transition: .2s all;
+  transition: .2s all ease-out;
   font-family: 'Open Sans', sans-serif;
   transform-style: preserve-3d;
   cursor: pointer;

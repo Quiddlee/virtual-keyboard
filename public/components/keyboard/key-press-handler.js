@@ -8,12 +8,8 @@ export default class KeyPressHandler extends KeyStates {
     this.keys = this.keyboardElem.children;
   }
 
-  checkCaps(pressedKey, keyLayer) {
+  checkCaps(pressedKey) {
     if (pressedKey !== 'CapsLock' && pressedKey.id !== 'capslock') return;
-
-    keyLayer.onanimationend = () => {
-      keyLayer.classList.remove('key__layer--active');
-    };
 
     const capsKey = this.getKey('capslock').classList;
     this.isCaps = !this.isCaps;
@@ -30,19 +26,18 @@ export default class KeyPressHandler extends KeyStates {
 
     const pressedKey = evt.code;
     const keyElem = this.getKey(pressedKey);
-    const keyLayer = keyElem.firstElementChild;
+    const keyLayer = document.createElement('span');
+
+    keyLayer.classList.add('key__layer', 'key__layer--active');
+    keyLayer.onanimationend = () => keyLayer.remove();
 
     if (downOrUp) {
       keyElem.classList.add('active');
-      this.checkCaps(pressedKey, keyLayer);
+      this.checkCaps(pressedKey);
 
-      keyLayer.classList.add('key__layer--active');
+      if (!evt.repeat) keyElem.append(keyLayer);
     } else if (!downOrUp && pressedKey !== 'CapsLock') {
       keyElem.classList.remove('active');
-
-      keyLayer.onanimationend = () => {
-        keyLayer.classList.remove('key__layer--active');
-      };
     }
 
     this.switchKeysLang(evt);
@@ -56,19 +51,18 @@ export default class KeyPressHandler extends KeyStates {
 
     const pressedKey = evt.target;
     const keyElem = this.getKey(pressedKey.id);
-    const keyLayer = keyElem.firstElementChild;
+    const keyLayer = document.createElement('span');
+
+    keyLayer.classList.add('key__layer', 'key__layer--active');
+    keyLayer.onanimationend = () => keyLayer.remove();
 
     if (downOrUp) {
       keyElem?.classList.add('active');
       this.checkCaps(keyLayer);
 
-      keyLayer.classList.add('key__layer--active');
+      if (!evt.repeat) keyElem.append(keyLayer);
     } else if (!downOrUp && pressedKey.id !== 'capslock') {
       keyElem?.classList.remove('active');
-
-      keyLayer.onanimationend = () => {
-        keyLayer.classList.remove('key__layer--active');
-      };
     }
 
     if ((pressedKey.textContent === 'Shift' && !this.isShift)
