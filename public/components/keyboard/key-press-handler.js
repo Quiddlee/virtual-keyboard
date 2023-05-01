@@ -8,14 +8,24 @@ export default class KeyPressHandler extends KeyStates {
     this.keys = this.keyboardElem.children;
   }
 
-  checkCaps(pressedKey) {
+  checkCaps(pressedKey, layerOld, capsElem) {
     if (pressedKey !== 'CapsLock' && pressedKey.id !== 'capslock') return;
 
-    const capsKey = this.getKey('capslock').classList;
     this.isCaps = !this.isCaps;
 
-    if (this.isCaps) capsKey.add('active');
-    else capsKey.remove('active');
+    if (this.isCaps) capsElem.classList.add('active');
+
+    if (!this.isCaps) {
+      capsElem.innerHTML = capsElem.textContent;
+
+      const keyLayer = document.createElement('span');
+
+      keyLayer.classList.add('key__layer', 'key__layer--active-rev');
+      keyLayer.onanimationend = () => keyLayer.remove();
+
+      capsElem.append(keyLayer);
+      capsElem.classList.remove('active');
+    }
 
     this.toggleCaps();
   }
@@ -33,9 +43,11 @@ export default class KeyPressHandler extends KeyStates {
 
     if (downOrUp) {
       keyElem.classList.add('active');
-      this.checkCaps(pressedKey);
 
-      if (!evt.repeat) keyElem.append(keyLayer);
+      if (evt.repeat) return;
+
+      keyElem.append(keyLayer);
+      this.checkCaps(pressedKey, keyLayer, keyElem);
     } else if (!downOrUp && pressedKey !== 'CapsLock') {
       keyElem.classList.remove('active');
     }

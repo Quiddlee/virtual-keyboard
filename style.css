@@ -7,7 +7,20 @@
   100% {
     scale: 3;
     opacity: 0;
+  }
+}
+
+@keyframes btnClickReverse {
+  0% {
+    scale: 3;
+    opacity: 0;
     border-radius: 100px;
+    background-color: rgba(243, 243, 243, .7);
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    border-radius: 6px;
   }
 }
 
@@ -82,11 +95,10 @@ body {
   border-radius: 6px;
   text-align: center;
   font-size: 1.35rem;
-  transition: .2s all ease-out;
+  transition: .1s all ease-out;
   font-family: 'Open Sans', sans-serif;
   transform-style: preserve-3d;
   cursor: pointer;
-  z-index: 5;
 }
 
 .key__layer {
@@ -98,7 +110,6 @@ body {
   opacity: 0;
   border-radius: 100px;
   transform: translateZ(-10px);
-  z-index: 1;
 }
 
 .key__layer--active {
@@ -106,12 +117,20 @@ body {
   height: 100%;
   background-color: rgba(243, 243, 243, .7);
   opacity: 1;
-  animation: btnClick .7s cubic-bezier(.32, .34, 0, .98);
+  animation: btnClick 1s cubic-bezier(.08, .64, .17, .93);
+}
+
+.key__layer--active-rev {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(243, 243, 243, .7);
+  opacity: 1;
+  animation: btnClickReverse .2s cubic-bezier(.64, .36, .16, 1.03);
 }
 
 .key:hover {
   cursor: pointer;
-  background-color: var(--color-primary);
+  background-color: rgba(245, 245, 245, .85);
   color: var(--color-secondary);
 }
 
