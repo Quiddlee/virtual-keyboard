@@ -7,6 +7,7 @@ export default class Textarea {
     this.textarea.setAttribute('id', 'textarea');
     this.textarea.setAttribute('rows', '5');
     this.textarea.setAttribute('cols', '50');
+    this.textarea.setAttribute('placeholder', 'RSS Virtual Keyboard');
     this.textarea.focus();
   }
 

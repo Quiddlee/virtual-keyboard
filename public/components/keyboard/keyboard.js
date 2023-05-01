@@ -7,10 +7,11 @@ export default class Keyboard {
     this.isCaps = false;
     this.isShift = false;
     this.currentLang = +localStorage.getItem('currentLang') || 0;
+    this.doc = document;
   }
 
   getKey(keyName) {
-    return document.getElementById(keyName.toLowerCase());
+    return this.doc.getElementById(keyName.toLowerCase());
   }
 
   renderKeys(keyMap) {

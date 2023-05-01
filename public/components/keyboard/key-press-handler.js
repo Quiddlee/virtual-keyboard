@@ -23,10 +23,14 @@ export default class KeyPressHandler extends KeyStates {
     if (key === 'Enter') {
       this.textareaElem.value += '\n';
     }
+
+    if (key === 'Tab') {
+      this.textareaElem.value += '\t';
+    }
   };
 
   createAnimationWave = (reversed = false) => {
-    const keyLayer = document.createElement('span');
+    const keyLayer = this.doc.createElement('span');
 
     keyLayer.classList.add('key__layer', `key__layer--active${reversed ? '-rev' : ''}`);
     keyLayer.onanimationend = () => keyLayer.remove();
@@ -37,15 +41,17 @@ export default class KeyPressHandler extends KeyStates {
   checkCaps(pressedKey, capsElem) {
     if (pressedKey !== 'CapsLock' && pressedKey.id !== 'capslock') return;
 
+    const caps = capsElem;
+
     this.isCaps = !this.isCaps;
     if (this.isCaps) capsElem.classList.add('active');
 
     if (!this.isCaps) {
       const wave = this.createAnimationWave(true);
 
-      capsElem.innerHTML = capsElem.textContent;
-      capsElem.append(wave);
-      capsElem.classList.remove('active');
+      caps.innerHTML = caps.textContent;
+      caps.append(wave);
+      caps.classList.remove('active');
     }
 
     this.toggleCaps();
