@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
+:root {
+  --color-primary: #f3f3f3;
+  --color-secondary: #ff585f;
+}
+
 @keyframes btnClick {
   0% {
     scale: 1;
@@ -24,11 +29,6 @@
   }
 }
 
-:root {
-  --color-primary: #f3f3f3;
-  --color-secondary: #ff585f;
-}
-
 * {
   box-sizing: inherit;
   margin: 0;
@@ -49,6 +49,8 @@ body {
   -ms-user-select: none;
   user-select: none;
   overflow: hidden;
+
+  font-family: 'Open Sans', sans-serif;
 }
 
 #app {
@@ -77,6 +79,8 @@ body {
   background-image: linear-gradient(to top left, #39b385, #9be15d);
   border-radius: 6px;
   overflow: hidden;
+
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
 }
 
 .key {
@@ -96,7 +100,6 @@ body {
   text-align: center;
   font-size: 1.35rem;
   transition: .1s all ease-out;
-  font-family: 'Open Sans', sans-serif;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -166,13 +169,18 @@ body {
 #textarea,
 #textarea:focus,
 #textarea:active {
+  padding: 2rem;
   width: 90rem;
   height: 25rem;
-  background-color: rgba(0, 0, 0, .1);
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);;
   backdrop-filter: blur(2rem);
   border: none;
   border-radius: 6px;
+  outline: none;
 
-  color: var(--color-secondary);
-  font-size: 1.5rem;
+  color: black;
+  font-size: 2.5rem;
+  font-family: inherit;
+
+  box-shadow: 1rem 1rem .5rem rgba(0, 0, 0, .1);
 }

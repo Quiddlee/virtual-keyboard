@@ -5,8 +5,25 @@ export default class KeyPressHandler extends KeyStates {
   constructor() {
     super();
     this.keyboardElem = document.querySelector('.keyboard');
+    this.textareaElem = document.querySelector('#textarea');
     this.keys = this.keyboardElem.children;
   }
+
+  handleTextarea = (key) => {
+    this.textareaElem.focus();
+
+    if (key.length === 1) {
+      this.textareaElem.value += key;
+    }
+
+    if (key === 'Backspace') {
+      this.textareaElem.value = this.textareaElem.value.slice(0, -1);
+    }
+
+    if (key === 'Enter') {
+      this.textareaElem.value += '\n';
+    }
+  };
 
   createAnimationWave = (reversed = false) => {
     const keyLayer = document.createElement('span');
@@ -43,6 +60,8 @@ export default class KeyPressHandler extends KeyStates {
     const wave = this.createAnimationWave();
 
     if (downOrUp) {
+      this.handleTextarea(keyElem.textContent);
+
       keyElem.classList.add('active');
 
       if (evt.repeat) return;
