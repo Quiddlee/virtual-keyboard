@@ -12,10 +12,8 @@
 }
 
 :root {
-  --color-primary: #000000;
-  --color-secondary: #ff1e56;
-  --color-tertirary: #15090c;
-  --color-quaternary: #32000c;
+  --color-primary: #f3f3f3;
+  --color-secondary: #ff585f;
 }
 
 * {
@@ -49,7 +47,7 @@ body {
 
   width: 100vw;
   height: 100vh;
-  background-color: #f3f3f3;
+  background-color: var(--color-primary);
 }
 
 .keyboard {
@@ -65,7 +63,6 @@ body {
   height: 25rem;
   background-image: linear-gradient(to top left, #39b385, #9be15d);
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, .1);
   overflow: hidden;
 }
 
@@ -84,11 +81,12 @@ body {
   background-color: rgba(243, 243, 243, .7);
   border-radius: 6px;
   text-align: center;
-  font-size: 1.37rem;
+  font-size: 1.35rem;
   transition: .2s all ease-out;
   font-family: 'Open Sans', sans-serif;
   transform-style: preserve-3d;
   cursor: pointer;
+  z-index: 5;
 }
 
 .key__layer {
@@ -100,6 +98,7 @@ body {
   opacity: 0;
   border-radius: 100px;
   transform: translateZ(-10px);
+  z-index: 1;
 }
 
 .key__layer--active {
@@ -112,18 +111,18 @@ body {
 
 .key:hover {
   cursor: pointer;
-  background-color: #f3f3f3;
+  background-color: var(--color-primary);
   color: var(--color-secondary);
 }
 
 .active {
   border-radius: 100px;
-  background-color: #f3f3f3;
-  color: #ff585f;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 #space {
-  min-width: 34rem;
+  min-width: 34.6rem;
 }
 
 #capslock,
