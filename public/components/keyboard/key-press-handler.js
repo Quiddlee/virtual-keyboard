@@ -11,16 +11,19 @@ export default class KeyPressHandler extends KeyStates {
 
   handleTextarea = (key) => {
     this.textareaElem.focus();
+    const { selectionStart } = this.textareaElem;
+    const { selectionEnd } = this.textareaElem;
+    const cut = this.textareaElem.value.split('');
 
     if (key.length === 1) {
-      this.textareaElem.value += key;
+      cut.splice(selectionStart, 0, key);
+      this.textareaElem.value = cut.join('');
+
+      this.textareaElem.setSelectionRange(selectionStart + 1, selectionEnd + 1);
     }
 
     if (key === 'Backspace') {
-      const { selectionStart } = this.textareaElem;
-      const { selectionEnd } = this.textareaElem;
-
-      const cut = this.textareaElem.value.split('');
+      if (selectionStart === 0) return;
       cut.splice(selectionStart - 1, 1);
       this.textareaElem.value = cut.join('');
 
@@ -28,18 +31,20 @@ export default class KeyPressHandler extends KeyStates {
     }
 
     if (key === 'Enter') {
-      this.textareaElem.value += '\n';
+      cut.splice(selectionStart, 0, '\n');
+      this.textareaElem.value = cut.join('');
+
+      this.textareaElem.setSelectionRange(selectionStart + 1, selectionEnd + 1);
     }
 
     if (key === 'Tab') {
-      this.textareaElem.value += '\t';
+      cut.splice(selectionStart, 0, '\t');
+      this.textareaElem.value = cut.join('');
+
+      this.textareaElem.setSelectionRange(selectionStart + 1, selectionEnd + 1);
     }
 
     if (key === 'Del') {
-      const { selectionStart } = this.textareaElem;
-      const { selectionEnd } = this.textareaElem;
-
-      const cut = this.textareaElem.value.split('');
       cut.splice(selectionStart, 1);
       this.textareaElem.value = cut.join('');
 
