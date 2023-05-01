@@ -24,14 +24,19 @@ export default class KeyStates extends Keyboard {
     });
   }
 
-  switchKeysLang() {
+  switchKeysLang(evt) {
+    if (!evt.altKey || !evt.ctrlKey) return;
+
     this.currentLang = this.currentLang === KEYMAP.length - 1 ? 0 : this.currentLang + 1;
-    this.renderKeysContent();
     localStorage.setItem('currentLang', this.currentLang);
+
+    this.renderKeysContent();
   }
 
   toggleShift() {
     this.isShift = !this.isShift;
+    this.isCaps = !this.isCaps;
     this.renderKeysContent();
+    this.toggleCaps();
   }
 }

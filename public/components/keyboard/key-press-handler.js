@@ -8,16 +8,15 @@ export default class KeyPressHandler extends KeyStates {
     this.keys = this.keyboardElem.children;
   }
 
-  checkCaps(evt) {
-    const currCapsState = evt.getModifierState('CapsLock');
-    const capsKey = this.getKey('CapsLock')?.classList;
+  checkCaps(pressedKey) {
+    if (pressedKey !== 'CapsLock' && pressedKey.id !== 'capslock') return;
 
-    if (currCapsState) capsKey.add('active');
+    const capsKey = this.getKey('capslock').classList;
+    this.isCaps = !this.isCaps;
+
+    if (this.isCaps) capsKey.add('active');
     else capsKey.remove('active');
 
-    if (currCapsState === this.isCaps) return;
-
-    this.isCaps = currCapsState;
     this.toggleCaps();
   }
 
@@ -28,40 +27,33 @@ export default class KeyPressHandler extends KeyStates {
     const pressedKey = evt.code;
     const keyElem = this.getKey(pressedKey)?.classList;
 
-    if (downOrUp) keyElem.add('active');
-    else keyElem.remove('active');
-
-    if (evt.altKey && evt.ctrlKey) this.switchKeysLang();
-
-    this.checkCaps(evt);
-    if ((evt.shiftKey && !this.isShift) || (!evt.shiftKey && this.isShift)) this.toggleShift();
-
-    if (this.isCaps && this.isShift) {
-      this.isCaps = false;
-      this.toggleCaps();
-    } else if (this.isCaps || this.isShift) {
-      this.isCaps = true;
-      this.toggleCaps();
+    if (downOrUp) {
+      keyElem.add('active');
+      this.checkCaps(pressedKey);
+    } else if (pressedKey !== 'CapsLock') {
+      keyElem.remove('active');
     }
+
+    this.switchKeysLang(evt);
+
+    if (((evt?.shiftKey && !this.isShift)
+        || (!evt?.shiftKey && this.isShift))) this.toggleShift(evt);
   };
 
-  mousePress = (evt) => {
+  mousePress = (evt, downOrUp = true) => {
     if (!evt.target.classList.contains('key')) return;
 
     const pressedKey = evt.target;
     const keyElem = this.getKey(pressedKey.id)?.classList;
-    keyElem.toggle('active');
 
-    this.checkCaps(evt);
+    if (downOrUp) {
+      keyElem.add('active');
+      this.checkCaps(pressedKey);
+    } else if (pressedKey.id !== 'capslock') {
+      keyElem.remove('active');
+    }
+
     if ((pressedKey.textContent === 'Shift' && !this.isShift)
         || (pressedKey.textContent === 'Shift' && this.isShift)) this.toggleShift();
-
-    if (this.isCaps && this.isShift) {
-      this.isCaps = false;
-      this.toggleCaps();
-    } else if (this.isCaps || this.isShift) {
-      this.isCaps = true;
-      this.toggleCaps();
-    }
   };
 }
